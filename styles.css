@@ -1,81 +1,327 @@
-*{margin: 0; padding: 0; font-family: 'Josefin Sans', sans-serif;}
-        .hide{display: none;}
-        .carGame{
-            width: 100%;
-            height: 100vh;
-            background-image: url('assets/images/bg.jpg');
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-        }
-        .car, .enemyCar{
-            width: 50px;
-            height: 70px;
-            background: red;
+
+         *{margin: 0; padding: 0; font-family: 'Josefin Sans', sans-serif;}
+         .hide{display: none;}
+         .carGame{
+             width: 100%;
+             height: 100vh;
+             background-image: url('assets/images/bg.jpg');
+             background-repeat: no-repeat;
+             background-size: 100% 100%;
+             
+         }
+         .car{
+             width: 50px;
+             height: 70px;
+             background: red;
+             position: absolute;
+             bottom: 120px;
+             background-image: url('assets/images/car.png');
+             background-repeat: no-repeat;
+             background-size: 100% 100%;
+         }
+
+         .radio-container{
+            padding: 1em;
+         }
+
+         .enemyCar{
+            width: 60px;
+            height: 80px;
             position: absolute;
             bottom: 120px;
-            background-image: url('assets/images/car.png');
+            background-image: url('assets/images/flag.png');
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
-        .roadLines{
-            width: 10px;
-            height: 100px;
-            position: absolute;
-            background: white;
-            margin-left: 195px;   /* show line in center = (gameArea.width / 2) - (roadLines.width / 2) */
-        }
-        .gameArea{
-            width: 400px;
-            height: 100vh;
-            background: #2d3436;
-            margin: auto;
-            position: relative;
-            overflow: hidden;
-            border-right: 7px dashed #c8d6e5;
-            border-left: 7px dashed #c8d6e5;
-        }
-        .score{
-            position: absolute;
-            top: 15px;
-            left: 40px;
-            background: #10ac84;
-            width: 300px;
-            line-height: 70px;
-            text-align: center;
-            color: white;
-            font-size: 1.5em;
-            box-shadow: 0 5px 5px #777;
-        }
-        .startScreen{
-            position: absolute;
-            background-color: #ee5253;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            z-index: 1;
-            text-align: center;
-            border: 1px solid #ff6b6b;
-            padding: 15px;
-            margin: auto;
-            width: 50%;
-            cursor: pointer;
-            letter-spacing: 5;
-            font-size: 20px;
-            word-spacing: 3;
-            line-height: 30px;
-            text-transform: uppercase;
-            box-shadow: 0 5px 5px #777;
-        }
-        .level button {
-            padding: 7px;
-            font-size: 14px;
-            background: white;
-            border: 1px solid orangered;
-            border-radius: 10px;
-            width: 80px;
-            cursor: pointer;
-            outline: none;
-            box-shadow: 0 5px 5px #777777a6;
+
+
+         .roadLines{
+             width: 10px;
+             height: 100px;
+             position: absolute;
+             background: rgb(8, 8, 8);
+             margin-left: 195px;   
+         }
+         .gameArea{
+             width: 400px;
+             height: 100vh;
+             background: #818586;
+             margin: auto;
+             position: relative;
+             overflow: hidden;
+             border-right: 7px dashed #19191a;
+             border-left: 7px dashed #1c1e1f;
+         }
+         .score{
+             position: absolute;
+             top: 15px;
+             left: 40px;
+             background: #10ac84;
+             width: 150px;
+             line-height: 50px;
+             text-align: center;
+             color: white;
+             font-size: 1.5em;
+             box-shadow: 0 5px 5px #777;
+         }
+         .startScreen{
+             position: absolute;
+             background-color: #ee5253;
+             left: 50%;
+             top: 50%;
+             transform: translate(-50%, -50%);
+             color: white;
+             z-index: 1;
+             text-align: center;
+             border: 1px solid #ff6b6b;
+             padding: 15px;
+             margin: auto;
+             width: 50%;
+             cursor: pointer;
+             letter-spacing: 5;
+             font-size: 20px;
+             word-spacing: 3;
+             line-height: 30px;
+             text-transform: uppercase;
+             /* box-shadow: 0 5px 5px #814d4d; */
+         }
+         .level button {
+             padding: 7px;
+             font-size: 14px;
+             background: white;
+             border: 1px solid orangered;
+             border-radius: 10px;
+             width: 80px;
+             cursor: pointer;
+             outline: none;
+             box-shadow: 0 5px 5px #777777a6;
+         }
+         
+         .custom-modal-dialog {
+            width: 600px !important; /* Adjust the width as needed */
         }
         
+
+         /* Add this to your existing styles.css or in the head of your HTML file */
+
+.modal-content {
+    /* background-color: #aae4f3;  */
+    background: linear-gradient(white,pink);
+    border: 2px solid #3498db; /* Border color */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow */
+}
+
+.modal-header {
+    background-color: #3498db; /* Header background color */
+    color: #0a0a0a; /* Header text color */
+}
+
+.modal-body {
+    text-align: center;
+}
+#questionText {
+    font-size: 1.6em;
+    margin-bottom: 0.1px;
+    color: #080808; /* Dark text color */
+    text-align: left;
+}
+
+/* .radio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio-container label {
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    background-color: #3498db; 
+    color: #131212;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.radio-container input {
+    margin-right: 5px;
+}
+
+.radio-container label:hover {
+    background-color: #2980b9;
+}
+
+
+.radio-container input {
+    margin-right: 5px;
+}
+
+.radio-container label:hover {
+    background-color: #2980b9; 
+}
+
+.modal-footer {
+    justify-content: center;
+    padding-top: 20px;
+
+}
+
+#timer {
+    text-align: right;
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    color: #0c0b0b;
+    font-size: 1.2em;
+    background-color:#aae4f3;
+    padding: 9px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(41, 38, 38, 0.2);
+} */
+
+
+
+/* Additional styling for mobile responsiveness */
+@media (max-width: 480px) {
+    .modal-body {
+        padding: 20px;
+    }
+
+    #questionText {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+
+    .radio-container label {
+        font-size: 1em;
+        padding: 8px;
+    }
+
+   
+}
+
+
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.radio-container label {
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    background-color: #3498db;
+    color: #131212;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    animation: fadeInLeft 0.5s ease;
+}
+
+.radio-container label:hover {
+    background-color: #2980b9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1); /* Increase the size on hover */
+}
+
+.modal-footer {
+    justify-content: center;
+    padding-top: 20px;
+    animation: fadeInUp 0.3s ease;
+}
+
+#timer {
+    text-align: right;
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    color: #0c0b0b;
+    font-size: 1.3em;
+    /* background-color: #aae4f3; */
+    background: linear-gradient(white,pink);
+    padding: 9px;
+    border-radius: 50%; /* Round the border */
+    box-shadow: 0 0 10px rgba(41, 38, 38, 0.2);
+    /* transition: transform 0.5s ease; */
+}
+
+#timer:hover {
+    transform: rotate(360deg); /* Rotate 360 degrees on hover */
+}
+
+/* Additional styling for mobile responsiveness */
+@media (max-width: 480px) {
+    .modal-body {
+        padding: 20px;
+    }
+
+    #questionText {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+
+    .radio-container label {
+        font-size: 1em;
+        padding: 10px;
+    }
+}
+
+
+
+ 
+ 
+         @media (max-width: 480px) {
+             .carGame {
+                 background-size: cover;
+             }
+         
+             .startScreen{
+                 width: 200px;
+             }
+             
+             .gameArea {
+                 width: calc(100%-14px);
+                 height: 100vh;
+                 background: #2d3436;
+             }
+ 
+     
+             .score {
+                 left: 150px;
+                 width: 100px;
+                 font-size: 1em;
+                 z-index: 1;
+             }
+         }
+
+ 
+         
+     
+ 
+    
